@@ -18,6 +18,7 @@ class PokeCell: UICollectionViewCell {
         self.pokemon = pokemon
         
         thumbLbl.text = self.pokemon.name.capitalizedString
+        thumbLbl.font = UIFont(name: "Pokemon Solid", size: 14)
         thumbImg.image = UIImage(named: "\(self.pokemon.pokedexID)")
     }
     
