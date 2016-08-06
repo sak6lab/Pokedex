@@ -40,16 +40,35 @@
                                         <color key="textColor" red="0.22352941179999999" green="0.37254901959999998" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5WX-v4-VPm">
+                                        <rect key="frame" x="534" y="14" width="58" height="43"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="58" id="uIj-i8-2bu"/>
+                                            <constraint firstAttribute="height" constant="43" id="ucT-U9-GBx"/>
+                                        </constraints>
+                                        <state key="normal" image="Music"/>
+                                        <connections>
+                                            <action selector="toggledMusic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kpw-FF-A5n"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.79607843137254897" blue="0.019607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="5WX-v4-VPm" secondAttribute="trailing" constant="8" id="7e7-4J-tin"/>
                                     <constraint firstItem="aF6-cz-3fZ" firstAttribute="centerX" secondItem="iEX-TZ-Pny" secondAttribute="centerX" id="GIs-nT-Q7a"/>
+                                    <constraint firstItem="5WX-v4-VPm" firstAttribute="centerY" secondItem="iEX-TZ-Pny" secondAttribute="centerY" id="K3d-31-3hN"/>
+                                    <constraint firstItem="5WX-v4-VPm" firstAttribute="centerX" secondItem="iEX-TZ-Pny" secondAttribute="centerX" id="PcK-W9-7nk"/>
                                     <constraint firstAttribute="height" constant="71" id="jkb-l9-0A6"/>
                                     <constraint firstItem="aF6-cz-3fZ" firstAttribute="centerY" secondItem="iEX-TZ-Pny" secondAttribute="centerY" id="mRg-6M-dYy"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="PcK-W9-7nk"/>
+                                    </mask>
+                                </variation>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BhD-4i-q3y">
-                                <rect key="frame" x="20" y="136" width="560" height="444"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BhD-4i-q3y">
+                                <rect key="frame" x="20" y="135" width="560" height="445"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="R3v-aY-GKT">
                                     <size key="itemSize" width="110" height="110"/>
@@ -144,6 +163,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="BhD-4i-q3y" id="yFz-Ha-5sm"/>
+                        <outlet property="musicToggler" destination="5WX-v4-VPm" id="FAk-1Y-en1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -153,6 +173,7 @@
     </scenes>
     <resources>
         <image name="1" width="120" height="120"/>
+        <image name="Music" width="58" height="59"/>
         <image name="bg" width="1920" height="1200"/>
     </resources>
 </document>

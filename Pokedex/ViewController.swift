@@ -12,6 +12,8 @@ import AVFoundation
 class ViewController: UIViewController ,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var musicToggler: UIButton!
+    
     
     var bgMusic: AVAudioPlayer!
     
@@ -76,6 +78,17 @@ class ViewController: UIViewController ,UICollectionViewDelegate, UICollectionVi
         } catch let err as NSError {
             print(err.debugDescription)
         }
+    }
+    
+    @IBAction func toggledMusic(sender: AnyObject){
+        if bgMusic.playing{
+            musicToggler.setImage(UIImage(named: "NoMusic.png")!, forState: .Normal)
+            bgMusic.pause()
+        } else {
+            musicToggler.setImage(UIImage(named: "Music.png")!, forState: .Normal)
+            bgMusic.play()
+        }
+        
     }
 
 }
