@@ -6,7 +6,8 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Pokemon Solid.ttf">
+        <mutableArray key="pokemon.ttf">
+            <string>PokemonSolidNormal</string>
             <string>PokemonSolidNormal</string>
         </mutableArray>
     </customFonts>
@@ -28,9 +29,23 @@
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iEX-TZ-Pny">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="71"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pokedex" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aF6-cz-3fZ">
+                                        <rect key="frame" x="220" y="22" width="160" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="27" id="SF9-1v-xnT"/>
+                                            <constraint firstAttribute="width" constant="160" id="cID-MC-Inz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PokemonSolidNormal" family="Pokemon Solid" pointSize="28"/>
+                                        <color key="textColor" red="0.22352941179999999" green="0.37254901959999998" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="1" green="0.79607843137254897" blue="0.019607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="aF6-cz-3fZ" firstAttribute="centerX" secondItem="iEX-TZ-Pny" secondAttribute="centerX" id="GIs-nT-Q7a"/>
                                     <constraint firstAttribute="height" constant="71" id="jkb-l9-0A6"/>
+                                    <constraint firstItem="aF6-cz-3fZ" firstAttribute="centerY" secondItem="iEX-TZ-Pny" secondAttribute="centerY" id="mRg-6M-dYy"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BhD-4i-q3y">
@@ -59,7 +74,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="28" id="OSu-u0-JzM"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="PokemonSolidNormal" family="Pokemon Solid" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="PokemonSolidNormal" family="Pokemon Solid" pointSize="16"/>
                                                     <color key="textColor" red="1" green="0.79607843140000001" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>

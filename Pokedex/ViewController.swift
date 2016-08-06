@@ -7,15 +7,25 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController ,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var bgMusic: AVAudioPlayer!
+    
     var listPokemon = [Pokemon]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        do {
+            try bgMusic = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("music", ofType: "mp3")!))
+        } catch let err as NSError {
+            print(err.debugDescription)
+        }
+        bgMusic.prepareToPlay()
+        bgMusic.play()
         collectionView.delegate = self
         collectionView.dataSource = self
         parsePokemonCSV()
