@@ -14,10 +14,10 @@ class PokeCell: UICollectionViewCell {
     
     var pokemon: Pokemon!
     
-    func configureCell(pokemon: Pokemon){
+    func configureCell(_ pokemon: Pokemon){
         self.pokemon = pokemon
         
-        thumbLbl.text = self.pokemon.name.capitalizedString
+        thumbLbl.text = self.pokemon.name.capitalized
         thumbLbl.font = UIFont(name: "Pokemon Solid", size: 14)
         thumbImg.image = UIImage(named: "\(self.pokemon.pokedexID)")
     }

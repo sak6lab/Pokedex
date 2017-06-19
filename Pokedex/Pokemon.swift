@@ -10,18 +10,18 @@ import Foundation
 import Alamofire
 
 class Pokemon {
-    private var _name: String!
-    private var _pokedexID: Int!
-    private var _description: String!
-    private var _type: String!
-    private var _defense: String!
-    private var _height: String!
-    private var _weight: String!
-    private var _attack: String!
-    private var _nextEvolutionTxt: String!
-    private var _nextEvolutionId: String!
-    private var _nextEvolutionLvl: String!
-    private var _pokemonUrl: String!
+    fileprivate var _name: String!
+    fileprivate var _pokedexID: Int!
+    fileprivate var _description: String!
+    fileprivate var _type: String!
+    fileprivate var _defense: String!
+    fileprivate var _height: String!
+    fileprivate var _weight: String!
+    fileprivate var _attack: String!
+    fileprivate var _nextEvolutionTxt: String!
+    fileprivate var _nextEvolutionId: String!
+    fileprivate var _nextEvolutionLvl: String!
+    fileprivate var _pokemonUrl: String!
     
     var name: String{
         return _name
@@ -91,9 +91,9 @@ class Pokemon {
         _pokemonUrl = "\(URL_BASE)\(URL_POKEMON)\(_pokedexID)/"
     }
     
-    func downloadPokemonDetails(completed: downloadComplete) {
-        let url = NSURL(string: _pokemonUrl)!
-        Alamofire.request(.GET, url).responseJSON { (response: Response<AnyObject, NSError>) in
+    func downloadPokemonDetails(_ completed: @escaping downloadComplete) {
+        let url = URL(string: _pokemonUrl)!
+        Alamofire.request(url).responseJSON{ response in
             let result = response.result
             
             if let dict = result.value as? Dictionary<String, AnyObject> {
@@ -114,15 +114,15 @@ class Pokemon {
                     self._defense = "\(defense)"
                 }
                 
-                if let types = dict["types"] as? [Dictionary<String, String>] where types.count > 0 {
+                if let types = dict["types"] as? [Dictionary<String, String>], types.count > 0 {
                     if let type = types[0]["name"]{
-                        self._type = type.capitalizedString
+                        self._type = type.capitalized
                     }
                     
                     if types.count > 1 {
                         for x in 1..<types.count{
                             if let name = types[x]["name"] {
-                                self._type! += "/\(name.capitalizedString)"
+                                self._type! += "/\(name.capitalized)"
                             }
                         }
                     }
@@ -130,11 +130,11 @@ class Pokemon {
                     self._type = " "
                 }
                 
-                if let descArr = dict["descriptions"] as? [Dictionary<String, String>] where descArr.count > 0 {
+                if let descArr = dict["descriptions"] as? [Dictionary<String, String>], descArr.count > 0 {
                     
                     if let urlstr = descArr[0]["resource_uri"] {
-                        if let url = NSURL(string: "\(URL_BASE)\(urlstr)"){
-                            Alamofire.request(.GET, url).responseJSON(completionHandler: { (response: Response<AnyObject, NSError>) in
+                        if let url = URL(string: "\(URL_BASE)\(urlstr)"){
+                            Alamofire.request(url).responseJSON{ response in
                                 let desResult = response.result
                                 if let descDict = desResult.value as? Dictionary<String, AnyObject>  {
                                     if let description = descDict["description"] as? String {
@@ -146,7 +146,7 @@ class Pokemon {
                                 
                                 completed()
                                 
-                            })
+                            }
                         }
                     }
                    
@@ -154,14 +154,14 @@ class Pokemon {
                    self._description = " "
                 }
                 
-                if let evolArr = dict["evolutions"] as? [Dictionary<String, AnyObject>] where evolArr.count > 0{
+                if let evolArr = dict["evolutions"] as? [Dictionary<String, AnyObject>], evolArr.count > 0{
                     if let to = evolArr[0]["to"] as? String {
-                        if to.rangeOfString("mega") == nil {
+                        if to.range(of: "mega") == nil {
                             
                             if let uri = evolArr[0]["resource_uri"] as? String {
                                 
-                                let newstr = uri.stringByReplacingOccurrencesOfString("/api/v1/pokemon/", withString: "")
-                                let num = newstr.stringByReplacingOccurrencesOfString("/", withString: "")
+                                let newstr = uri.replacingOccurrences(of: "/api/v1/pokemon/", with: "")
+                                let num = newstr.replacingOccurrences(of: "/", with: "")
                                 
                                 self._nextEvolutionId = num
                                 self._nextEvolutionTxt = to
